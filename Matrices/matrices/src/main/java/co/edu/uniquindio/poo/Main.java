@@ -61,7 +61,7 @@ public class Main {
         int matriz[][] = {{0, 0, 0, 0},
                           {0, 0, 0, 0},
                           {0, 0, 0, 0},
-                          {0, 0, 0, 0}};
+                          {0, 0, 0, 0},};
         int tamanoMatriz = 4;
         int numero = 1;
         int filaInicial = 0;
@@ -106,6 +106,3 @@ public class Main {
         }
     }
 }
-
-
-
