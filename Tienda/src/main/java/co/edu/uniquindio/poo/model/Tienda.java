@@ -225,5 +225,20 @@ public class Tienda {
         return resultado;
     }
 
+    //punto 6:   Obtener las facturas que tenga un cliente
+    // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
+
+    public List<Factura> facturaClienteYProducto(String nombre){
+        List<Factura> resultado = new ArrayList<>();
+
+        List<Factura> facturasIphone= facturaTipoProducto("Iphone 16 pro max");
+        for(Factura facturasAdecuadas:facturasIphone){
+            if(facturasAdecuadas.cliente().getNombreCompleto().contains(nombre)){
+            resultado.add(facturasAdecuadas);
+            }
+        }
+        return resultado;
+    }
+
 
 }
