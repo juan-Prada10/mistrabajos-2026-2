@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo.model;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.Optional;
 import java.util.Map;
@@ -161,6 +160,7 @@ public class Tienda {
 
 
 
+    //1.Obtener los productos con una cantidad mayor o igual a 10
 
     public List<Producto> productoMayoresDiez(){
         List<Producto> productoAdecuado = new ArrayList<>();
@@ -172,6 +172,7 @@ public class Tienda {
         return productoAdecuado;
     }
 
+    //2.Obtener la lista de codigos de los productos con una cantidad disponible mayor igual a 10 y menor que 50
 
     public List<String> productosMenoresCincuenta(){
         List<String> productosMenores=new ArrayList<>();
@@ -183,18 +184,6 @@ public class Tienda {
             }
         }
         return productosMenores;
-    }
-
-
-    public ArrayList<Cliente> obtenerClientesCompras(){
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
-        LocalDate fechaConsulta = LocalDate.of(2026,10,7);
-        for (Factura factura : listaFacturas){
-            if(factura.fechaGeneracion().isEqual(fechaConsulta)){
-                listaClientes.add(factura.cliente());
-            }
-        }
-        return listaClientes;
     }
 
 

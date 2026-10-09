@@ -33,10 +33,9 @@ public class DetalleFactura {
 
     //Logica
 
-    public double calcularSubTotal(){
+    public double calcularSubTotal(Producto producto){
         return cantidadComprada* producto.getPrecio();
     }
-
 
 
 }
