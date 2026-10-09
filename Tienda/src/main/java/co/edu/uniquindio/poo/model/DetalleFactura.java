@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo.model;
 
+import java.util.*;
+
 public class DetalleFactura {
 
     private final int cantidadComprada;
@@ -33,9 +35,10 @@ public class DetalleFactura {
 
     //Logica
 
-    public double calcularSubTotal(Producto producto){
+    public double calcularSubTotal(){
         return cantidadComprada* producto.getPrecio();
     }
+
 
 
 }

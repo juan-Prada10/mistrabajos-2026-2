@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Map;
 import java.util.HashMap;
@@ -161,7 +162,7 @@ public class Tienda {
 
 
 
-    //1.Obtener los productos con una cantidad mayor o igual a 10
+    //punto 1.Obtener los productos con una cantidad mayor o igual a 10
 
     public List<Producto> productoMayoresDiez(){
         List<Producto> productoAdecuado = new ArrayList<>();
@@ -173,7 +174,7 @@ public class Tienda {
         return productoAdecuado;
     }
 
-    //2.Obtener la lista de codigos de los productos con una cantidad disponible mayor igual a 10 y menor que 50
+    //punto 2.Obtener la lista de codigos de los productos con una cantidad disponible mayor igual a 10 y menor que 50
 
     public List<String> productosMenoresCincuenta(){
         List<String> productosMenores=new ArrayList<>();
@@ -187,7 +188,7 @@ public class Tienda {
         return productosMenores;
     }
 
-    //3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026
+    //punto 3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026
 
     public ArrayList<Cliente> obtenerClientesCompras(){
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -200,5 +201,34 @@ public class Tienda {
         return listaClientes;
     }
 
+    //punto 4:   Obtener las facturas que tenga un cliente donde su nombre empiece por R
+
+    public ArrayList<Factura> obtenerFacturasClienteConR(){
+        ArrayList<Factura> resultado = new ArrayList<>();
+
+        for (Factura factura : listaFacturas){
+            if(factura.tieneClienteConR()){
+                resultado.add(factura);
+            }
+        }
+        return resultado;
+
+    }
+
+    //punto 5:   Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+
+    public List<Factura> facturasPorProducto (String tipoProducto){
+        List<Factura> productoAdecuado= new ArrayList<>();
+        for(Factura factura: listaFacturas){
+            for(DetalleFactura detalleFactura: factura.listaDetalleFactura()){
+                if (detalleFactura.getproducto().getNombre().equals(tipoProducto)){
+                productoAdecuado.add(factura);
+                break;}
+            }
+        }
+        return productoAdecuado;
+    }
+
+    
 
 }

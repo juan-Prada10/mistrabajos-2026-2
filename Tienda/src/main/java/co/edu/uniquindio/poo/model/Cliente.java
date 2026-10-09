@@ -50,4 +50,8 @@ public class Cliente {
     public List<Factura> getListaFacturas(){
         return listaFacturas;
     }
+
+    public boolean verificarNombreConR() {
+        return nombreCompleto.startsWith("R");
+    }
 }
