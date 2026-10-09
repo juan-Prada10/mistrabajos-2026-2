@@ -161,7 +161,7 @@ public class Tienda {
 
 
 
-
+    //punto 1. Obtener la lista de los productos con una cantidad disponible mayor igual a 10
     public List<Producto> productoMayoresDiez(){
         List<Producto> productoAdecuado = new ArrayList<>();
         for(Producto productosBuenos : listaProductos.values()){
@@ -172,7 +172,7 @@ public class Tienda {
         return productoAdecuado;
     }
 
-
+    //punto 2. Obtener la lista de codigos de los productos con una cantidad disponible mayor igual a 10 y menor que 50
     public List<String> productosMenoresCincuenta(){
         List<String> productosMenores=new ArrayList<>();
 
@@ -185,7 +185,7 @@ public class Tienda {
         return productosMenores;
     }
 
-
+    //3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026
     public ArrayList<Cliente> obtenerClientesCompras(){
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         LocalDate fechaConsulta = LocalDate.of(2026,10,7);
@@ -195,6 +195,34 @@ public class Tienda {
             }
         }
         return listaClientes;
+    }
+
+    //punto 4:   Obtener las facturas que tenga un cliente donde su nombre empiece por R
+
+    public ArrayList<Factura> obtenerFacturasClienteConR(){
+        ArrayList<Factura> resultado = new ArrayList<>();
+
+        for (Factura factura : listaFacturas){
+            if(factura.tieneClienteConR()){
+                resultado.add(factura);
+            }
+        }
+        return resultado;
+
+    }
+
+    //punto 5:   Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> facturaTipoProducto(String tipoProducto){
+        List<Factura> resultado= new ArrayList<>();
+        for(Factura factura: listaFacturas){
+            for(DetalleFactura detalleFactura: factura.listaDetalleFactura()){
+                if(detalleFactura.getproducto().getNombre().equals(tipoProducto)){
+                    resultado.add(factura);
+                    break;
+                }
+            }
+        }
+        return resultado;
     }
 
 
