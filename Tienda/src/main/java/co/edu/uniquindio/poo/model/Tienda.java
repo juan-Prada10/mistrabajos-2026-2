@@ -266,6 +266,23 @@ public class Tienda {
         }
         return resultado;
     }
-    
+
+    //punto 9: Implementar un método que retorne todos los productos
+    // registrados en la tienda, ordenados de menor a mayor según su precio.
+
+    public List<Producto> ordenados(){
+        List<Producto> productos=new ArrayList<>(listaProductos.values());
+        for (int i = 0; i < productos.size() - 1; i++) {
+            for (int j = 0; j < productos.size() - 1 - i; j++) {
+                if (productos.get(j).getPrecio() >
+                        productos.get(j + 1).getPrecio()) {
+                    Producto auxiliar = productos.get(j);
+                    productos.set(j, productos.get(j + 1));
+                    productos.set(j + 1, auxiliar);
+                }
+            }
+        }
+        return productos;
+    }
 
 }
