@@ -253,6 +253,19 @@ public class Tienda {
         }
         return resultado;
     }
+
+    //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
+    // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+
+    public List<Producto> productosSegunPresio(double precioMinimo,double precioMayor){
+        List<Producto> resultado=new ArrayList<>();
+        for(Producto producto:listaProductos.values()){
+            if(producto.getPrecio()>=precioMinimo && producto.getPrecio()<=precioMayor){
+                resultado.add(producto);
+            }
+        }
+        return resultado;
+    }
     
 
 }
