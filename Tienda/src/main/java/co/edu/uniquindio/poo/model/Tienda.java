@@ -240,5 +240,19 @@ public class Tienda {
         return resultado;
     }
 
+    // Punto 7: Implementar un método que reciba una categoría
+    //  y retorne todos los productos registrados que pertenezcan a ella.}
+
+    public List<Producto> productosSegunCategoria(String categoria){
+        Categoria categoriaSeleccionada= Categoria.valueOf(categoria.toUpperCase());
+        List<Producto> resultado = new ArrayList<>();
+        for(Producto producto: listaProductos.values()){
+            if(producto.getCategoria()== categoriaSeleccionada){
+                resultado.add(producto);
+            }
+        }
+        return resultado;
+    }
+    
 
 }

@@ -43,6 +43,8 @@ public class Producto {
         return cantidadDisponible;
     }
 
+    public Categoria getCategoria(){ return categoria;}
+
     public void setCantidadDisponible(int cantidadDisponible){
         this.cantidadDisponible=cantidadDisponible;
     }
