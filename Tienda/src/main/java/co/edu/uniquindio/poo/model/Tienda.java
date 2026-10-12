@@ -241,7 +241,7 @@ public class Tienda {
     }
 
     // Punto 7: Implementar un método que reciba una categoría
-    //  y retorne todos los productos registrados que pertenezcan a ella.}
+    //  y retorne todos los productos registrados que pertenezcan a ella.
 
     public List<Producto> productosSegunCategoria(String categoria){
         Categoria categoriaSeleccionada= Categoria.valueOf(categoria.toUpperCase());
@@ -314,4 +314,79 @@ public class Tienda {
         return resultado;
     }
 
+
+    //Declarativa
+
+    //punto 1. Obtener la lista de los productos con una cantidad disponible mayor igual a 10
+    public List<Producto> mayoresADiez(){
+        return listaProductos.values().stream().filter(producto -> producto.getCantidadDisponible()>10).toList();
+    }
+
+    //punto 2. Obtener la lista de codigos de los productos con una cantidad disponible mayor igual a 10 y menor que 50
+    public List<Producto> MayoresDiezMenoresCincuenta(){
+        List<Producto> lista=new ArrayList<>();
+        return listaProductos.values().stream().filter
+                (producto -> producto.getCantidadDisponible()>=10 && producto.getCantidadDisponible()<50).toList();
+    }
+
+    //3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026
+    public List<Cliente> compradoEnFecha(LocalDate fecha){
+        return listaFacturas.stream().filter
+                (factura -> factura.fechaGeneracion().isEqual(fecha)).map(Factura::cliente).toList();
+    }
+
+    //punto 4:   Obtener las facturas que tenga un cliente donde su nombre empiece por R
+    public List<Factura> clientesEmpiecenR(){
+        return listaFacturas.stream().filter(factura -> factura.cliente().verificarNombreConR()).toList();
+    }
+
+    //punto 5:   Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> facturasDispositivo(String dispositivoBuscar){
+        return listaFacturas.stream().filter
+                (factura -> factura.listaDetalleFactura().stream().anyMatch
+                        (detalleFactura -> detalleFactura.getproducto().getNombre()
+                                .equalsIgnoreCase(dispositivoBuscar))).toList();
+    }
+
+    //punto 6:   Obtener las facturas que tenga un cliente
+    // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> facturasSegunProductoFactura(String producto, String nombre){
+        return listaFacturas.stream().filter
+                (factura -> factura.listaDetalleFactura().stream().anyMatch
+                        (detalleFactura -> detalleFactura.getproducto().getNombre().equalsIgnoreCase(producto))
+                        && factura.cliente().getNombreCompleto().contains("juan")).toList();
+    }
+
+    // Punto 7: Implementar un método que reciba una categoría
+    //  y retorne todos los productos registrados que pertenezcan a ella.
+    public List<Producto> productosPorCategoria(String categoriaBuscar){
+        Categoria categoria = Categoria.valueOf(categoriaBuscar);
+        return listaProductos.values().stream().filter(producto -> producto.getCategoria().equals(categoria)).toList();
+    }
+
+    //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
+    // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+    public List<Producto> productosMaxMin(double min, double max){
+        return listaProductos.values().stream().filter(producto -> producto.getPrecio()>min && producto.getPrecio()<max).toList();
+    }
+
+    //punto 9: Implementar un método que retorne todos los productos
+    // registrados en la tienda, ordenados de menor a mayor según su precio.
+    public List<Producto> productosDeMenorMayor(){
+        return listaProductos.values().stream().sorted(Comparator.comparing(producto -> producto.getPrecio())).toList();
+    }
+
+    //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
+    // Si no existen productos registrados, el método debe retornar un Optional vacío.
+    public Optional<Producto> productoMasCaro(){
+        return listaProductos.values().stream().max(Comparator.comparing(producto -> producto.getPrecio()));
+    }
+
+    //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
+    // todos los clientes que residan en ella.
+    // La búsqueda debe realizarse sin diferenciar entre mayúsculas y minúsculas.
+    public List<Cliente> clientePorCiudad(String ciudad){
+        return listaClientes.stream().filter(cliente -> cliente.getCiudadRecidencia().equalsIgnoreCase(ciudad)).toList();
+    }
+    
 }
