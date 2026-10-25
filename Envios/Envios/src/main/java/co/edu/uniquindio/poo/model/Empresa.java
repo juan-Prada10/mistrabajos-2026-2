@@ -76,7 +76,7 @@ public class Empresa {
 
     }
 
-    public Boolean sepuedeActualizarEnvio(String codigo){
+    public boolean sepuedeActualizarEnvio(String codigo){
         Optional<Envio> envioEncontrado= buscarEnvio(codigo);
         if(envioEncontrado.isPresent()){
             return true;
