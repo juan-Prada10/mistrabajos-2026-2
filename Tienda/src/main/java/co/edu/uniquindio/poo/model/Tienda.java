@@ -39,7 +39,7 @@ public class Tienda {
     }
 
     public List<Factura> getListaFacturas(){
-        return listaFacturas;
+        return Collection.unmodificableList(listaFacturas);
     }
 
     public Map<String, Producto> getListaProductos() {
@@ -388,5 +388,5 @@ public class Tienda {
     public List<Cliente> clientePorCiudad(String ciudad){
         return listaClientes.stream().filter(cliente -> cliente.getCiudadRecidencia().equalsIgnoreCase(ciudad)).toList();
     }
-    
+
 }
